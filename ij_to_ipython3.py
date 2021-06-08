@@ -21,26 +21,26 @@ def run(command, process, history, wait=True):
 	process.stdin.write(command + "\n")
 	process.stdin.flush()   	
 	history.append(command)
-	print(command)
-	out = out + (">>>" + command + "\n")
+#	print(command)
+	out = out + command + "\n"
 	if not wait:
 		return
 	while not cont:
 		time.sleep(0.02)
 	
 history = []
-python = subprocess.Popen(['/home/baecker/anaconda3/bin/python3 -i -u'],
+python = subprocess.Popen(['/home/baecker/anaconda3/bin/python3 -u /home/baecker/anaconda3/bin/ipython3 -i'],
                        shell=True,
                        stdin=subprocess.PIPE,
                        stdout=subprocess.PIPE,
                        stderr=subprocess.PIPE)
 t = Thread(target=deal_with_stdout, args=[python])
 t.setDaemon(True)
-t.start()                       
+t.start()     
 run("a = 2", python, history, wait=False)
 run("4 * a", python, history)                 
 run("print('Hello')", python, history)      
-run("help(a)", python, history)
+# run("help(a)", python, history)
 run("exit()", python, history, wait=False)          
 time.sleep(2)   
 result = python.communicate()
