@@ -12,7 +12,7 @@ def deal_with_stdout(process):
 	while(True):
 		for line in process.stdout:
 			print(line)
-			out = out + line + "\n"
+			out = out + line 
 			cont = True
 
 def run(command, process, history, wait=True):
@@ -38,7 +38,7 @@ t = Thread(target=deal_with_stdout, args=[python])
 t.setDaemon(True)
 t.start()                       
 run("a = 2", python, history, wait=False)
-run("4 * 2", python, history)                 
+run("4 * a", python, history)                 
 run("print('Hello')", python, history)      
 run("help(a)", python, history)
 run("exit()", python, history, wait=False)          
