@@ -1,5 +1,46 @@
 # IJPB - ImageJ Python Bridge
 
+# Prerequisites
+
+* FIJI
+* conda
+
+# How to use
+
+* clone the repository<br>``git clone https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge.git``
+* cd into the folder ImageJ-Python-Bridge<br>``cd ImageJ-Python-Bridge``
+* create a conda environment from the ``environment.yml`` file<br>``conda env create -f environment.yml`` 
+* activate the environment<br>``conda activate ijpb``
+* adjust the path and memory settings in ijpb/func.py according to your FIJI version
+* in startFIJI.py set the path to your FIJI-installation folder
+* run a jupyter qt-console<br>``jupyter qtconsole &``
+* in the console run the script that starts FIJI<br> ``run startFIJI``
+* in FIJI use the IPythonProxy to run python commands
+
+```python
+p = IPythonProxy()
+p.run("from ij import IJ")
+p.run("a = 3")
+p.run("print(a)", wait=True)
+p.run("a = a+3")
+p.run("print(a)", wait=True)
+p.run('print("Hello")', wait=True)
+p.run('IJ.setProperty("py_res", a)')
+p.disconnect()
+```
+```
+  >>>from ij import IJ
+  >>>a = 3
+  >>>print(a)
+  3
+  >>>a = a+3
+  >>>print(a)
+  6
+  >>>print("Hello")
+  Hello
+  >>>IJ.setProperty("py_res", a)
+```
+
 # Under the hood
 
 * make ImageJ communicate with python3
