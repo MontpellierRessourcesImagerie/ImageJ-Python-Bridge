@@ -16,8 +16,10 @@
 * run a jupyter qt-console<br>``jupyter qtconsole &``
 * in the console run the script that starts FIJI<br> ``run startFIJI``
 * in FIJI use the IPythonProxy to run python commands
+* in the ``jars/Lib`` folder of your FIJI installation create a symbolic link to the ``ijpb``-folder or copy the ``ijpb``-folder into ``jars/Lib``.
 
 ```python
+from ijpb.fiji.IPythonProxy import IPythonProxy
 p = IPythonProxy()
 p.run("from ij import IJ")
 p.run("a = 3")
