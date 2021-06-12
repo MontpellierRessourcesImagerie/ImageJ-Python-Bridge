@@ -6,6 +6,7 @@ from jpype.types import *
 import os
 from pathlib import Path
 import jupyter_client
+import sys
 
 def startFIJI(aPath):
     os.chdir(aPath)
@@ -30,4 +31,4 @@ def startFIJI(aPath):
     ClassLauncher.main(("-ijjarpath", "jars", "-ijjarpath", "plugins", "net.imagej.Main"))
     from ij import IJ, ImageJ
     IJ.setProperty('jupter_connection_file', jupyter_client.find_connection_file())
-
+    IJ.setProperty('python_executable', sys.executable)
