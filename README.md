@@ -30,3 +30,4 @@
 * showcase a tool that opens the active ImageJ image in napari
 * showcase using python k-means clustering in ImageJ
 * showcase using python deep-learning algs in ImageJ (use IJPB in DL4Mic)
+* write a scijava scripting-language plugin for python 3 and add it to the FIJI-script editor
