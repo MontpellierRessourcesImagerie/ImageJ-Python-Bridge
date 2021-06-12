@@ -15,7 +15,7 @@ def deal_with_stdout(process):
 			print(line)
 			out = out + line 
 			cont = True
-
+			
 def run(command, process, history, wait=True):
 	global cont, out
 	cont = False
@@ -23,7 +23,6 @@ def run(command, process, history, wait=True):
 	process.stdin.flush()   	
 	history.append(command)
 	print(command)
-	out = out + (">>>" + command + "\n")
 	if not wait:
 		return
 	while not cont:
@@ -31,16 +30,11 @@ def run(command, process, history, wait=True):
 
 def kRun(command, process, history, wait=True):
 	global cont, out
-	cont = False
-	process.stdin.write("msgid = kc.execute('"+command+"')\n")
-	process.stdin.flush()   	
-	history.append(command)
-	print(command)
+	run("msgid = kc.execute_interactive('"+command+"')\n", process, history, wait=False)
 	out = out + (">>>" + command + "\n")
-	if not wait:
-		return
-	while not cont:
-		time.sleep(0.02)
+	if wait:
+		run("res = kc.get_shell_msg(msgid, timeout=0)", process, history, wait=False)		
+		run('print(res)', process, history, wait=True)
 
 def connect():
 	history = []
@@ -64,9 +58,13 @@ def createKernelClient(python, history):
 
 t, python, history = connect()
 createKernelClient(python, history)
-
-kRun("from napariJ.func import *", python, history, wait=False)
-kRun("displayActiveImageInNewWindow()", python, history, wait=False)
+kRun("from ij import IJ", python, history, wait=False)
+kRun("a = 3", python, history, wait=False)
+kRun("print(a)", python, history, wait=True)
+kRun("a = a+3", python, history, wait=False)
+kRun("print(a)", python, history, wait=True)
+kRun('print("Hello")', python, history, wait=True)
+kRun('IJ.setProperty("py_res", a)', python, history, wait=False)
 run("exit()", python, history, wait=False)
 time.sleep(2)   
 result = python.communicate()
