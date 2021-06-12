@@ -28,6 +28,19 @@ p.run('print("Hello")', wait=True)
 p.run('IJ.setProperty("py_res", a)')
 p.disconnect()
 ```
+```
+  >>>from ij import IJ
+  >>>a = 3
+  >>>print(a)
+  3
+  >>>a = a+3
+  >>>print(a)
+  6
+  >>>print("Hello")
+  Hello
+  >>>IJ.setProperty("py_res", a)
+```
+
 # Under the hood
 
 * make ImageJ communicate with python3
