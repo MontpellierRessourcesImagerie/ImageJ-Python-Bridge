@@ -16,8 +16,10 @@
 * run a jupyter qt-console<br>``jupyter qtconsole &``
 * in the console run the script that starts FIJI<br> ``run startFIJI``
 * in FIJI use the IPythonProxy to run python commands
+* in the ``jars/Lib`` folder of your FIJI installation create a symbolic link to the ``ijpb``-folder or copy the ``ijpb``-folder into ``jars/Lib``.
 
 ```python
+from ijpb.fiji.IPythonProxy import IPythonProxy
 p = IPythonProxy()
 p.run("from ij import IJ")
 p.run("a = 3")
@@ -59,8 +61,6 @@ p.disconnect()
 # Status
 
 * early proof of concept
-* see [jupyter_client_with_ret_.py](https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge/blob/main/exploring/jupyter_client_with_ret_.py) and
-* [napariJ/func.py](https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge/blob/main/napariJ/func.py)
 
 **If you want to participate in the development of IJPB on any level (design, programming, documentation, ...)  please contact [me](https://github.com/volker-baecker)**
 
