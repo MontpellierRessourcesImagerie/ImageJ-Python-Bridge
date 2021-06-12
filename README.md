@@ -18,4 +18,5 @@
 # Status
 
 * early proof of concept
-* see [jupyter_client_with_ret_.py](https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge/blob/main/exploring/jupyter_client_with_ret_.py)
+* see [jupyter_client_with_ret_.py](https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge/blob/main/exploring/jupyter_client_with_ret_.py) and
+* [napariJ/func.py](https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge/blob/main/napariJ/func.py)
