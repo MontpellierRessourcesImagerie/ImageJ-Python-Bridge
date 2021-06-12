@@ -61,8 +61,6 @@ p.disconnect()
 # Status
 
 * early proof of concept
-* see [jupyter_client_with_ret_.py](https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge/blob/main/exploring/jupyter_client_with_ret_.py) and
-* [napariJ/func.py](https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge/blob/main/napariJ/func.py)
 
 **If you want to participate in the development of IJPB on any level (design, programming, documentation, ...)  please contact [me](https://github.com/volker-baecker)**
 
