@@ -14,3 +14,8 @@
 * Use ImageJ image processing and analysis in python applications, for example napari-plugins
 * Use python image and data analysis in ImageJ workflows (macros, scripts, plugins)
 * Run and control the training and application of python based Deep-Learning algorithms from ImageJ
+
+# Status
+
+* early proof of concept
+* see [jupyter_client_with_ret_.py](https://github.com/MontpellierRessourcesImagerie/ImageJ-Python-Bridge/blob/main/exploring/jupyter_client_with_ret_.py)
