@@ -2,7 +2,7 @@ from jpype import *
 import jpype.imports
 from jpype.types import *
 import numpy as np
-from ij import IJ
+from ij import IJ, ImagePlus
 from ij.plugin import HyperStackConverter
 import napari
 
@@ -72,3 +72,14 @@ def replaceImageWithActiveImage(viewer):
                          blending='additive',
                          scale=[zFactor, 1, 1])
     viewer.dims.ndisplay = 3
+    
+def screenshot(viewer):
+    screenshot = viewer.screenshot(canvas_only=True)
+    pixels = JInt[:](list(screenshot[:, :, 0:3].flatten()))
+    image = java.awt.image.BufferedImage(screenshot.shape[1], screenshot.shape[0], java.awt.image.BufferedImage.TYPE_3BYTE_BGR)
+    image.getRaster().setPixels(0,0,screenshot.shape[1], screenshot.shape[0], pixels)
+    title = viewer.layers[0].name
+    if 'C1-' in viewer.layers[0].name:
+	    title = title.split('C1-')[1]
+    ip = ImagePlus("screenshot of " + title, image)
+    ip.show()
