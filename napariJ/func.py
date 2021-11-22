@@ -5,6 +5,8 @@ import numpy as np
 from ij import IJ, ImagePlus
 from ij.plugin import HyperStackConverter
 import napari
+import pandas as pd
+from ij.measure import ResultsTable
 
 def displayActiveImageInNewWindow():
     image = IJ.getImage()
@@ -83,3 +85,21 @@ def screenshot(viewer):
 	    title = title.split('C1-')[1]
     ip = ImagePlus("screenshot of " + title, image)
     ip.show()
+    
+def getResulsTable():
+    results = ResultsTable.getResultsTable()
+    headings = list(results.getColumnHeadings().split("\t"))[1:]
+    data = {}
+    for i in range(0, len(headings)):
+        data[headings[i]] = results.getColumn(i)
+    results = pd.DataFrame(data=data)
+    pd.set_option('display.max_rows', 1000)
+    return results
+    
+def displayPoints():
+    data = ResultsTable.getResultsTable()
+    cal = IJ.getImage().getCalibration()
+    coords = [[z, y, x] for [x,y,z] in np.delete(data.values,[3], axis=1)]
+    zFactor = cal.getZ(1) / cal.getX(1)
+    points_layer = viewer.add_points(icoords, size=1, scale=[zFactor, 1, 1])
+    return points_layer

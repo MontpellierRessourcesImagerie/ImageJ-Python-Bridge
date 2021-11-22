@@ -7,7 +7,8 @@ import os
 from pathlib import Path
 import jupyter_client
 import sys
-
+from PyQt5 import QtCore
+    
 def startFIJI(aPath):
     os.chdir(aPath)
     startJVM(
@@ -31,3 +32,10 @@ def startFIJI(aPath):
     from ij import IJ, ImageJ
     IJ.setProperty('jupter_connection_file', jupyter_client.find_connection_file())
     IJ.setProperty('python_executable', sys.executable)
+    
+def startImageJ():
+    path = '/media/baecker/DONNEES1/programs/fiji-linux64/Fiji.app/'
+    startFIJI(path)
+    
+def startFIJIInThread():
+    QtCore.QTimer.singleShot(0, startImageJ)

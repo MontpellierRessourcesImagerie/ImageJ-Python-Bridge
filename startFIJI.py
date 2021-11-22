@@ -1,2 +1,2 @@
 from ijpb.func import *
-startFIJI("/media/baecker/DONNEES1/programs/fiji-linux64/Fiji.app/")
+startFIJI("/media/baecker/DONNEES/programs/Fiji.app/")

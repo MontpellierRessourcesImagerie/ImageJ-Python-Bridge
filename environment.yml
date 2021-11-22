@@ -37,7 +37,7 @@ dependencies:
   - liblapack=3.9.0
   - libopenblas=0.3.15
   - libpng=1.6.37
-  - libstdcxx-ng=9.3.0
+  - libstdcxx-ng=11.2.0
   - libtiff=4.3.0
   - libuuid=2.32.1
   - libwebp-base=1.2.0
